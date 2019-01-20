@@ -1,32 +1,38 @@
 package com.pacosignes.tema8.ex7;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-public class Paciente {
+public class Patient {
     //basic atributes
     private int sip;
     private String name;
     private char gender;
     private int age;
-    private int entryDate;
-    //todo gregorian calendar
-    private string psyntoms;
+    private int[] entryDate=new int[3];
+    private String psyntoms;
+    private boolean isWaiting;
 
     //specific atributes
     private float[] preRev=new float[4];
     private boolean alta;
-    private int altaDate;
-    //todo gregorian calendar
+    private int[] altaDate=new int[3];
     private String altaMessage;
 
-    public Paciente(int sip, String name, char gender, int age, int entryDate, string psyntoms) {
+    public Patient(int sip, String name, char gender, int age,String psyntoms) {
         this.sip = sip;
         this.name = name;
         this.gender = gender;
         this.age = age;
-        this.entryDate = entryDate;
         this.psyntoms = psyntoms;
+
+        Calendar calendar=new GregorianCalendar();
+        this.entryDate[0]=calendar.get(Calendar.YEAR);
+        this.entryDate[1]=calendar.get(Calendar.MONTH);
+        this.entryDate[2]=calendar.get(Calendar.DAY_OF_MONTH);
+
     }
 
-    public Paciente(int sip, String name, char gender, int age, int entryDate, string psyntoms, float[] preRev, boolean alta) {
+    public Patient(int sip, String name, char gender, int age, int[] entryDate, String psyntoms, float[] preRev, boolean alta) {
         this.sip = sip;
         this.name = name;
         this.gender = gender;
@@ -39,7 +45,7 @@ public class Paciente {
 
     //setters
 
-    public void setAltaDate(int altaDate) {
+    public void setAltaDate(int[] altaDate) {
         this.altaDate = altaDate;
     }
     //todo calendar
@@ -48,6 +54,9 @@ public class Paciente {
     }
 
     //getters
+    public boolean getIsWaiting(){
+        return isWaiting;
+    }
     public int getSip() {
         return sip;
     }
@@ -64,11 +73,11 @@ public class Paciente {
         return age;
     }
 
-    public int getEntryDate() {
+    public int[] getEntryDate() {
         return entryDate;
     }
 
-    public string getPsyntoms() {
+    public String getPsyntoms() {
         return psyntoms;
     }
 

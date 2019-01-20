@@ -1,81 +1,69 @@
 package com.pacosignes.tema8.ex7;
-import java.util.Scanner;
 public class Urgencias {
 
+    private String townName;
     private int numPacientes;
     private int databaseSize;
-    private Paciente[] waitingList=new Paciente[numPacientes];
-    private Paciente[][] dataBase=new Paciente[databaseSize][40];
+    private int dailyPatients;
+    private Patient[] waitingList=new Patient[numPacientes];
+    private Patient[][] dataBase=new Patient[databaseSize][dailyPatients];
 
-    public static void main(String[] args) {
-        int menu1;
-        int menu2;
-        Scanner lector= new Scanner(System.in);
-        //Menu principal
-        do{
-            menu1=showMenu();
-            switch (menu1){
-                case 1:
-                    newPatient();
-                    break;
-                case 2:
-                    heal();
-                    break;
-                case 3:
-                    //menu de consultas
-                    menu2=showMenuConsultas();
-                    switch (menu2){
-                        case 1:
-                            bySip();
-                            break;
-                        case 2:
-                            bydate();
-                            break;
-                        case 3:
-                            statdistics();
-                            break;
-                        case 4:
-                            showFull();
-                            break;
-                    }
-                   1 break;
-                case 4:
-                    alta();
-                case 0:
-                    System.out.println("Hasta luego Lucas");
-            }
-        }while(menu1!=0);
-
-
-
-
-
-    }
     //metodos
 
 
-        public static int showMenu(){
-            int num;
-            do{
-                System.out.println("*************************");
-                System.out.println("********Urgencias********");
-                System.out.println("*************************");
-                System.out.println("1.Nuevo Paciente");
-                System.out.println("2.Atender Paciente");
-                System.out.println("3.Consultas");
-                System.out.println("4.Alta medica");
-                System.out.println("-------------------");
-                System.out.println("0.Salir");
-                num=lector.nextInt();
-                lector.nextLine();
+    public void showMenu(){
 
-            }while(num<0 || num>4);
+        System.out.println("*************************");
+        System.out.println("********Urgencias********");
+        System.out.println("*************************");
+        System.out.println("1.Nuevo Patient");
+        System.out.println("2.Atender Patient");
+        System.out.println("3.Consultas");
+        System.out.println("4.Alta medica");
+        System.out.println("-------------------");
+        System.out.println("0.Salir");
+    }
 
-            return num;
+    /**
+     * Esta funcion recibe un Objeto de la clase paciente y lo mete en la cola de espera
+     * En caso de que el array se quede pequeño, crea otro con el doble de tamaño con la funcion arrayRescale.
+     * @param p paciente p construido con el constructor 1 de obtencion de datos.
+     *
+     */
+    public void newPatient(Patient p){
+        int i=0;
+        while(i<waitingList.length && !(waitingList[i] == null || !waitingList[i].getIsWaiting())){
+            i++;
+        }
+        if (i==waitingList.length){
+            arrayRescale();
         }
 
-        public static void new Patient(){
+        if (waitingList[i] == null || !waitingList[i].getIsWaiting()) {
+            waitingList[i] = p;
+        }
 
     }
+
+    /**
+     * Esta es la funcion encargada de reescalar el array para que augmente su tamanyo.
+     * Esta funcion es privada ya que solo puede ser llamada desde el metodo newPatient.
+     */
+    private void arrayRescale(){
+        numPacientes*=2;
+        Patient[] waitingListAux=new Patient[numPacientes];
+        for(int i =0; i<waitingList.length;i++){
+            waitingListAux[i]=waitingList[i];
+        }
+        waitingList=waitingListAux;
+    }
+
+    public void checkPatient(Patient p){
+
+
+
+
+    }
+
 
 }
