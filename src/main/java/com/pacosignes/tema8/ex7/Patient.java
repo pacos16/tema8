@@ -48,6 +48,9 @@ public class Patient {
     public void setPreRev(float[] preRev) {
         this.preRev = preRev;
     }
+    public void setIsWaiting(boolean b){
+        this.isWaiting=b;
+    }
 
     public void setAltaDate(int[] altaDate) {
         this.altaDate = altaDate;
@@ -99,5 +102,10 @@ public class Patient {
 
     public String getAltaMessage() {
         return altaMessage;
+    }
+
+
+    public String toString(){
+        return ""+String.format("%12d",sip)+String.format("%30s",name)+String.format()
     }
 }

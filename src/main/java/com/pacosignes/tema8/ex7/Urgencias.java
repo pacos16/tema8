@@ -8,6 +8,9 @@ public class Urgencias {
     private Patient[] waitingList=new Patient[numPacientes];
     private Patient[][] dataBase=new Patient[databaseSize][dailyPatients];
 
+
+
+
     //metodos
 
 
@@ -84,6 +87,46 @@ public class Urgencias {
     public Patient getFromWLByPosition(int i){
         return waitingList[i];
     }
+    public boolean insertInDB(Patient p,int pos){
+        int[] date;
+        int[] date1;
+        int i;
+        for( i=0; i<dataBase.length;i++){
+           date= dataBase[i][0].getEntryDate();
+           date1=p.getEntryDate();
+           if(date1[0]>=date[0] && date1[1]>=date[1] && date1[2]>=date[2]){
+               int j;
+               for( j=0;j<dataBase[0].length && dataBase[i][j]!=null;j++){
+
+               }
+               if(j==dataBase[0].length){
+                   return false;
+               }else{
+                   dataBase[i][j]=p;
+                   waitingList[pos].setIsWaiting(false);
+                   return true;
+               }
+
+
+           }
+           if(i==dataBase.length-1){
+
+               Patient[][] dataAux=new Patient[databaseSize*2][dailyPatients];
+
+               for(int k=0;k<dataBase.length;k++){
+                   for (int l=0;l<dataBase[0].length;l++){
+                       if(dataBase[k][l]!=null){
+                           dataAux[k][l]=dataBase[k][l];
+                       }
+                   }
+               }
+               databaseSize*=2;
+               dataBase=dataAux;
+           }
+        }
+        return false;
+    }
+
 
 
 
