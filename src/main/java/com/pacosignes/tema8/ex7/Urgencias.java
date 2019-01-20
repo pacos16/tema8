@@ -1,5 +1,5 @@
 package com.pacosignes.tema8.ex7;
-
+import java.util.Scanner;
 public class Urgencias {
 
     private int numPacientes;
@@ -10,6 +10,7 @@ public class Urgencias {
     public static void main(String[] args) {
         int menu1;
         int menu2;
+        Scanner lector= new Scanner(System.in);
         //Menu principal
         do{
             menu1=showMenu();
@@ -37,7 +38,7 @@ public class Urgencias {
                             showFull();
                             break;
                     }
-                    break;
+                   1 break;
                 case 4:
                     alta();
                 case 0:
@@ -46,15 +47,35 @@ public class Urgencias {
         }while(menu1!=0);
 
 
-        //metodos
 
 
-        public int showMenu(){
-
-        }
 
     }
+    //metodos
 
 
+        public static int showMenu(){
+            int num;
+            do{
+                System.out.println("*************************");
+                System.out.println("********Urgencias********");
+                System.out.println("*************************");
+                System.out.println("1.Nuevo Paciente");
+                System.out.println("2.Atender Paciente");
+                System.out.println("3.Consultas");
+                System.out.println("4.Alta medica");
+                System.out.println("-------------------");
+                System.out.println("0.Salir");
+                num=lector.nextInt();
+                lector.nextLine();
+
+            }while(num<0 || num>4);
+
+            return num;
+        }
+
+        public static void new Patient(){
+
+    }
 
 }
