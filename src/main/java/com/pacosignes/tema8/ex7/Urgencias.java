@@ -58,12 +58,33 @@ public class Urgencias {
         waitingList=waitingListAux;
     }
 
-    public void checkPatient(Patient p){
 
+    public boolean isBeingAttended(int sip){
+        for(int i =0; i< dataBase.length;i++){
+            for(int j =0; j<dataBase[0].length;j++){
+                if(dataBase[i][j].getSip()==sip && !dataBase[i][j].isAlta()){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
+    public int isWaiting(int sip){
 
+        for (int i =0; i<waitingList.length;i++){
+            if(sip==waitingList[i].getSip() && waitingList[i].getIsWaiting()){
+                return i;
+            }
+        }
+        return -1;
 
     }
+
+    public Patient getFromWLByPosition(int i){
+        return waitingList[i];
+    }
+
 
 
 }

@@ -12,6 +12,8 @@ public class Patient {
     private String psyntoms;
     private boolean isWaiting;
 
+
+
     //specific atributes
     private float[] preRev=new float[4];
     private boolean alta;
@@ -32,23 +34,25 @@ public class Patient {
 
     }
 
-    public Patient(int sip, String name, char gender, int age, int[] entryDate, String psyntoms, float[] preRev, boolean alta) {
-        this.sip = sip;
-        this.name = name;
-        this.gender = gender;
-        this.age = age;
-        this.entryDate = entryDate;
-        this.psyntoms = psyntoms;
+    public Patient(Patient p, float[] preRev) {
+        this.sip=p.getSip();
+        this.name=p.getName();
+        this.gender=p.getGender();
+        this.age=p.getAge();
+        this.psyntoms = p.psyntoms;
         this.preRev = preRev;
-        this.alta = alta;
     }
 
     //setters
 
+    public void setPreRev(float[] preRev) {
+        this.preRev = preRev;
+    }
+
     public void setAltaDate(int[] altaDate) {
         this.altaDate = altaDate;
     }
-    //todo calendar
+
     public void setAltaMessage(String altaMessage) {
         this.altaMessage = altaMessage;
     }
@@ -89,7 +93,7 @@ public class Patient {
         return alta;
     }
 
-    public int getAltaDate() {
+    public int[] getAltaDate() {
         return altaDate;
     }
 
