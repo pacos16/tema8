@@ -5,10 +5,19 @@ public class Urgencias {
     private int numPacientes;
     private int databaseSize;
     private int dailyPatients;
-    private Patient[] waitingList=new Patient[numPacientes];
-    private Patient[][] dataBase=new Patient[databaseSize][dailyPatients];
+    private Patient[] waitingList;
+    private Patient[][] dataBase;
 
-    //todo constructor db con nombre num pacientes y size(dias) dayly paiients
+
+    public Urgencias(int numPacientes, int databaseSize, int dailyPatients){
+        this.numPacientes=numPacientes;
+        this.databaseSize=databaseSize;
+        this.dailyPatients=dailyPatients;
+
+        waitingList=new Patient[numPacientes];
+        dataBase=new Patient[databaseSize][dailyPatients];
+    }
+
 
 
     //metodos
@@ -76,7 +85,7 @@ public class Urgencias {
     public int isWaiting(int sip){
 
         for (int i =0; i<waitingList.length;i++){
-            if(sip==waitingList[i].getSip() && waitingList[i].getIsWaiting()){
+            if(waitingList[i] != null && sip==waitingList[i].getSip() && waitingList[i].getIsWaiting()){
                 return i;
             }
         }
@@ -126,6 +135,38 @@ public class Urgencias {
         }
         return false;
     }
+    public String lookForBySip(int sip){
+        String todo=null;
+
+        for(int i=0;i<dataBase.length;i++){
+            for(int j=0;j<dataBase[0].length;j++){
+                if (dataBase[i][j].getSip()==sip){
+                    todo+=dataBase[i][j].toString1();
+                }
+            }
+        }
+        return todo;
+    }
+
+    public String lookForByDate(int[] date, int[]date2){
+        String s=null;
+        boolean condicion;
+        for(int i =0;i<dataBase.length;i++){
+            condicion=dataBase[i][0].getEntryDate()[0]<=date[0] && dataBase[i][0].getEntryDate()[0]>=date2[0] &&
+                    dataBase[i][0].getEntryDate()[1]<=date[1] && dataBase[i][0].getEntryDate()[1]>=date2[1] &&
+                    dataBase[i][0].getEntryDate()[2]<=date[0] && dataBase[i][0].getEntryDate()[2]>=date2[0];
+            if(condicion){
+                for(int j=0;j<dataBase[0].length && dataBase[i][j]!=null;j++) {
+
+                    s +=dataBase[i][j].toString1();
+                }
+            }
+        }
+        return s;
+
+
+    }
+
 
 
 

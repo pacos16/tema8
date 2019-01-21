@@ -5,14 +5,30 @@ import java.util.Scanner;
 public class Ex7 {
 
     private static Scanner lector = new Scanner(System.in);
-    private static Urgencias dB = new Urgencias();
-    public static void execute() {
+    private static Urgencias dB;
+    public static void main(String[] args) {
         int menu1;
         int menu2;
-
+        String name;
+        int databaseSize;
+        int waitingList;
+        int dailyPatients;
         System.out.println("Bienvenido a la base de datos de urgencias.");
         System.out.println("Introduzca el nombre del pueblo en el que nos encontramos");
-        //todo scanners y constructor db
+        name=lector.nextLine();
+        System.out.println("Dime el tamanyo inicial de la lista de espera");
+        waitingList=lector.nextInt();
+        lector.nextLine();
+        System.out.println("Dime la cantidad de dias que quieres guardar incialmente en la base de datos");
+        databaseSize=lector.nextInt();
+        lector.nextLine();
+        System.out.println("Dime la cantidad de pacientes que podemos atender al dia");
+        dailyPatients=lector.nextInt();
+        lector.nextLine();
+
+        dB=new Urgencias(waitingList,databaseSize,dailyPatients);
+
+        System.out.println("Base de datos creada con exito");
 
 
         //Bucle principal
@@ -55,21 +71,27 @@ public class Ex7 {
 
                     switch (menu2) {
                         case 1:
-                            bySip();
+                            String x=bySip();
+                            if ( x !=""){
+                                System.out.println(x);
+
+                            }else{
+                                System.out.println("No se ha encontrado ninguna coincidencia");
+                            }
                             break;
                         case 2:
-                            bydate();
+                            //bydate();
                             break;
                         case 3:
-                            statdistics();
+                            //statdistics();
                             break;
                         case 4:
-                            showFull();
+                            //showFull();
                             break;
                     }
                     break;
                 case 4:
-                    alta();
+                    //alta();
                 case 0:
                     System.out.println("Hasta luego Lucas");
             }
@@ -223,6 +245,37 @@ public class Ex7 {
         System.out.println("3.Estadisticas");
         System.out.println("4.Mostrar historico mensual");
     }
+
+    private static String bySip(){
+        int sip;
+
+
+        System.out.println("Dime un sip");
+        sip=lector.nextInt();
+        lector.nextLine();
+
+        return dB.lookForBySip(sip);
+
+
+    }
+    /*
+    private static String byDate(){
+
+
+        int [] date=new int[3];
+        System.out.println("Fecha1");
+        System.out.println("Dime el dia");
+        date[2]=lector.nextInt();
+        lector.nextLine();
+        System.out.println("Dime el mes");
+        date[1]=lector.nextInt();
+        lector.nextLine();
+        System.out.println("Dime el anyo");
+        date[0]=lector.nextInt();
+        lector.nextLine();
+        //todo comprobar;
+
+    }*/
 
 
 }

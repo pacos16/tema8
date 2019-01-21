@@ -20,6 +20,15 @@ public class Patient {
     private int[] altaDate=new int[3];
     private String altaMessage;
 
+    public Patient(){
+        sip=0;
+        name="";
+        gender='u';
+        age=0;
+        isWaiting=false;
+
+    }
+
     public Patient(int sip, String name, char gender, int age,String psyntoms) {
         this.sip = sip;
         this.name = name;
@@ -106,7 +115,19 @@ public class Patient {
 
 
     public String toString(){
-        return ""+String.format("%12d",sip)+String.format("%30s",name)+String.format();
+        return ""+String.format("%12d",sip)+String.format("%30s",name)+
+                String.format("%5d-%2d-%6d",entryDate[2],entryDate[1],entryDate[0])+ String.format("  %20s",psyntoms);
         //todo string format
+    }
+    public String toString1(){
+
+        return ""+String.format("%12d",sip)+String.format("%30s",name)+
+                String.format("%5d-%2d-%6d",entryDate[2],entryDate[1],entryDate[0])+String.format("  %20s",psyntoms)+
+                String.format("%4f",preRev[0])+String.format("%4f",preRev[1])+String.format("%4f",preRev[2])+
+                String.format("%4f",preRev[3])+
+                String.format("%5s-%2s-%6s",altaDate == null ? "" : String.valueOf(altaDate[2]),
+                        altaDate == null ? "" : String.valueOf(altaDate[1]),
+                        altaDate == null ? "" : String.valueOf(altaDate[0])+"\n");
+
     }
 }
