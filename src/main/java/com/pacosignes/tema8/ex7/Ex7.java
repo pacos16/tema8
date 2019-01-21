@@ -12,6 +12,7 @@ public class Ex7 {
 
         System.out.println("Bienvenido a la base de datos de urgencias.");
         System.out.println("Introduzca el nombre del pueblo en el que nos encontramos");
+        //todo scanners y constructor db
 
 
         //Bucle principal
@@ -38,7 +39,7 @@ public class Ex7 {
                     preRev=attendPatient(position);
                     Patient c= new Patient(dB.getFromWLByPosition(position),preRev);
                     correct=dB.insertInDB(c,position);
-                    if (correct==true){
+                    if (correct){
                         System.out.println("Guardado con exito");
                     }else{
                         System.out.println("No se pueden atender mas pacientes hoy");

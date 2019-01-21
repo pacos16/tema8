@@ -106,6 +106,7 @@ public class Patient {
 
 
     public String toString(){
-        return ""+String.format("%12d",sip)+String.format("%30s",name)+String.format()
+        return ""+String.format("%12d",sip)+String.format("%30s",name)+String.format();
+        //todo string format
     }
 }

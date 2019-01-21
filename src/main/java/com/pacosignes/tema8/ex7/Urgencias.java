@@ -8,7 +8,7 @@ public class Urgencias {
     private Patient[] waitingList=new Patient[numPacientes];
     private Patient[][] dataBase=new Patient[databaseSize][dailyPatients];
 
-
+    //todo constructor db con nombre num pacientes y size(dias) dayly paiients
 
 
     //metodos
