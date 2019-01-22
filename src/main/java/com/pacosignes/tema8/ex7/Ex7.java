@@ -44,7 +44,7 @@ public class Ex7 {
 
             switch (menu1) {
                 case 1:
-                    Patient p= createPatient();
+                    Paciente p= createPatient();
                     dB.newPatient(p);
                     break;
                 case 2:
@@ -53,7 +53,7 @@ public class Ex7 {
                     boolean correct;
                     position=askForPatient();
                     preRev=attendPatient(position);
-                    Patient c= new Patient(dB.getFromWLByPosition(position),preRev);
+                    Paciente c= new Paciente(dB.getFromWLByPosition(position),preRev);
                     correct=dB.insertInDB(c,position);
                     if (correct){
                         System.out.println("Guardado con exito");
@@ -98,7 +98,7 @@ public class Ex7 {
         } while (menu1 != 0);
     }
 
-    private static Patient createPatient(){
+    private static Paciente createPatient(){
 
         int sip;
         String name;
@@ -160,7 +160,7 @@ public class Ex7 {
             }
         }while(psymtoms.length()<1 || psymtoms.length()>50);
 
-        return new Patient(sip, name, gender, age, psymtoms);
+        return new Paciente(sip, name, gender, age, psymtoms);
     }
     private static int askForPatient(){
         int sip;

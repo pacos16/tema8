@@ -2,7 +2,7 @@ package com.pacosignes.tema8.ex7;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class Patient {
+public class Paciente {
     //basic atributes
     private int sip;
     private String name;
@@ -20,16 +20,16 @@ public class Patient {
     private int[] altaDate=new int[3];
     private String altaMessage;
 
-    public Patient(){
+    public Paciente(){
         sip=0;
         name="";
         gender='u';
         age=0;
-        isWaiting=false;
+
 
     }
 
-    public Patient(int sip, String name, char gender, int age,String psyntoms) {
+    public Paciente(int sip, String name, char gender, int age, String psyntoms) {
         this.sip = sip;
         this.name = name;
         this.gender = gender;
@@ -43,7 +43,7 @@ public class Patient {
 
     }
 
-    public Patient(Patient p, float[] preRev) {
+    public Paciente(Paciente p, float[] preRev) {
         this.sip=p.getSip();
         this.name=p.getName();
         this.gender=p.getGender();

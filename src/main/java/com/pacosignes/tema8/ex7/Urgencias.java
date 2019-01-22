@@ -5,8 +5,8 @@ public class Urgencias {
     private int numPacientes;
     private int databaseSize;
     private int dailyPatients;
-    private Patient[] waitingList;
-    private Patient[][] dataBase;
+    private Paciente[] waitingList;
+    private Paciente[][] dataBase;
 
 
     public Urgencias(int numPacientes, int databaseSize, int dailyPatients){
@@ -14,8 +14,8 @@ public class Urgencias {
         this.databaseSize=databaseSize;
         this.dailyPatients=dailyPatients;
 
-        waitingList=new Patient[numPacientes];
-        dataBase=new Patient[databaseSize][dailyPatients];
+        waitingList=new Paciente[numPacientes];
+        dataBase=new Paciente[databaseSize][dailyPatients];
     }
 
 
@@ -28,8 +28,8 @@ public class Urgencias {
         System.out.println("*************************");
         System.out.println("********Urgencias********");
         System.out.println("*************************");
-        System.out.println("1.Nuevo Patient");
-        System.out.println("2.Atender Patient");
+        System.out.println("1.Nuevo Paciente");
+        System.out.println("2.Atender Paciente");
         System.out.println("3.Consultas");
         System.out.println("4.Alta medica");
         System.out.println("-------------------");
@@ -42,7 +42,7 @@ public class Urgencias {
      * @param p paciente p construido con el constructor 1 de obtencion de datos.
      *
      */
-    public void newPatient(Patient p){
+    public void newPatient(Paciente p){
         int i=0;
         while(i<waitingList.length && !(waitingList[i] == null || !waitingList[i].getIsWaiting())){
             i++;
@@ -63,7 +63,7 @@ public class Urgencias {
      */
     private void arrayRescale(){
         numPacientes*=2;
-        Patient[] waitingListAux=new Patient[numPacientes];
+        Paciente[] waitingListAux=new Paciente[numPacientes];
         for(int i =0; i<waitingList.length;i++){
             waitingListAux[i]=waitingList[i];
         }
@@ -93,10 +93,10 @@ public class Urgencias {
 
     }
 
-    public Patient getFromWLByPosition(int i){
+    public Paciente getFromWLByPosition(int i){
         return waitingList[i];
     }
-    public boolean insertInDB(Patient p,int pos){
+    public boolean insertInDB(Paciente p, int pos){
         int[] date;
         int[] date1;
         int i;
@@ -120,7 +120,7 @@ public class Urgencias {
            }
            if(i==dataBase.length-1){
 
-               Patient[][] dataAux=new Patient[databaseSize*2][dailyPatients];
+               Paciente[][] dataAux=new Paciente[databaseSize*2][dailyPatients];
 
                for(int k=0;k<dataBase.length;k++){
                    for (int l=0;l<dataBase[0].length;l++){
