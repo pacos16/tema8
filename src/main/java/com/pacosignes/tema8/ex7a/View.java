@@ -40,21 +40,28 @@ public class View {
                 lector.nextLine();
             } while (menu1 < 0 || menu1 > 4);
 
-
+            int sip;
             switch (menu1){
                 case 1:
                     int pos;
-                    int sip;
+
                     Patient p;
-                    //todo ask sip
+                    sip=askSip();
                     pos=dB.lookForBySip(sip);
                     if(pos>=0){
                         p=dB.getPatient(pos);
                     }else{
                         //nuevoPaciente()
                     }
+                    //attendPatient1(p)
                     break;
                 case 2:
+                    do {
+                        sip = askSip();
+                    }while(!dB.isBeeingAttended(sip));
+
+                    //attend patient
+
                     break;
                 case 3:
                     break;
@@ -66,12 +73,15 @@ public class View {
 
 
     }
-    private int askSip(){
+    private static int askSip(){
         int sip;
         do {
             System.out.println("Dime un sip");
             sip=Integer.parseInt(lector.nextLine());
-        }while(sip<);
+            if(sip<10000000 ||  sip>99999999){
+                System.out.println("no es correcto introduzca de nuevo");
+            }
+        }while(sip<10000000 ||  sip>99999999);
 
 
     }

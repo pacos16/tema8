@@ -80,5 +80,18 @@ public class DataBase {
         }
         patientsDB=patientsDBAux;
     }
+    public boolean isBeeingAttended(int sip){
+        int j=0;
+        for(int i =0; attentionsDB[i][j]!=null && i<attentionsDB.length;i++){
+            for(j=0;attentionsDB[i][j]!=null && j<attentionsDB[0].length;j++){
+                if(sip==attentionsDB[i][j].getSip() && !attentionsDB[i][j].getAlta()){
+                    return true;
+
+                }
+            }
+        }
+        return false;
+    }
+
 
 }
