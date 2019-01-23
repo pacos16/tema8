@@ -35,6 +35,35 @@ public class DataBase {
         System.out.println("-------------------");
         System.out.println("0.Salir");
     }
+    public void showMenuConsultas(){
+        System.out.println("*******************");
+        System.out.println("*****Consultas*****");
+        System.out.println("*******************");
+        System.out.println("1.Por Sip");
+        System.out.println("2.Por fechas");
+        System.out.println("3.Estadisticas");
+        System.out.println("4.Mostrar historico mensual");
+    }
+
+    /**
+     *
+     * @param sip Recives a sip and looks for it in the array checking nulls before.
+     * @return if it finds it, retur position if dont return -1.
+     */
+    public int lookForBySip(int sip){
+
+        for(int i =0;i<patientsDB.length;i++){
+            if(patientsDB[i]!= null && patientsDB[i].getSip()==sip){
+                return i;
+            }
+        }
+        return -1;
+
+    }
+    public boolean newPatient(Patient p){
+        boolean isCorrect=true;
+
+    }
 
     /**
      * Esta es la funcion encargada de reescalar el array para que augmente su tamanyo.
