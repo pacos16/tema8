@@ -47,7 +47,7 @@ public class Patient {
         return false;
     }
 
-    public void setAge(int age) {
+    public boolean setAge(int age) {
         if (age<0 || age>150){
             this.age = age;
             return true;

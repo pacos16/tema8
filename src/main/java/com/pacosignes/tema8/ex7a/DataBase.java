@@ -64,6 +64,9 @@ public class DataBase {
         boolean isCorrect=true;
 
     }
+    public Patient getPatient(int i){
+        return patientsDB[i];
+    }
 
     /**
      * Esta es la funcion encargada de reescalar el array para que augmente su tamanyo.
